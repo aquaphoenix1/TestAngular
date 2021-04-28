@@ -1,0 +1,2 @@
+<button *ngIf="!authService.isAuthenticated()" (click)="signIn()">Вход</button>
+<button *ngIf="authService.isAuthenticated()" (click)="signOut()">Выход</button>

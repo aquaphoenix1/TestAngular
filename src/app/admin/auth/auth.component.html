@@ -1,0 +1,28 @@
+<app-splash-screen *ngIf="(authPending?.status | async) === status.LOADING"></app-splash-screen>
+
+<form #form="ngForm" class="form" (ngSubmit)="auth(authModel)">
+  <div class="form-group">
+    <div class="text">Логин:</div>
+    <input #name="ngModel" required class="input" [name]="'login'"
+           [(ngModel)]="authModel.login"/>
+  </div>
+  <ul class="text-danger list-unstyled" *ngIf="name.invalid">
+    <li *ngIf="name.errors.required">
+      You must enter a login
+    </li>
+  </ul>
+  <div class="form-group">
+    <div class="text">Пароль:</div>
+    <input #pass="ngModel" required class="input" [name]="'password'" [type]="'password'"
+           [(ngModel)]="authModel.password"/>
+  </div>
+  <ul class="text-danger list-unstyled" *ngIf="pass.invalid">
+    <li *ngIf="pass.errors.required">
+      You must enter a password
+    </li>
+  </ul>
+  <div class="form-group">
+    <button type="button" (click)="cancel()" class="button">Отменить</button>
+    <button [disabled]="form.invalid" type="submit" class="button">Войти</button>
+  </div>
+</form>

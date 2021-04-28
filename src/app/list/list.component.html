@@ -1,0 +1,7 @@
+<div *ngFor="let item of getData() | async" style="display: flex; margin: 5px;">
+  <label style="flex: 1;">
+    {{item.text}}
+    <input type="checkbox" [checked]="item.done" (click)="setDone(item, $event)"/>
+  </label>
+  <button (click)="delete(item)" class="danger" *ngIf="admin">Удалить</button>
+</div>
